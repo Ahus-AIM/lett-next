@@ -1,0 +1,9 @@
+{
+  "mode": "dataset_stats",
+  "clip_low": -999.0,
+  "clip_high": 255.0,
+  "mean": 69.86315155029297,
+  "std": 200.88116455078125,
+  "source_case_count": 10209,
+  "source_voxel_count": 204180000
+}

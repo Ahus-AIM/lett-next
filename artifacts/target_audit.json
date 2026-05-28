@@ -1,0 +1,150 @@
+{
+  "train_filter": {
+    "input_train_case_count": 25112,
+    "kept_train_case_count": 25112,
+    "nonempty_target_case_count": 25112,
+    "empty_or_missing_target_case_count": 0,
+    "missing_target_case_count": 0,
+    "excluded_empty_train_masks": true,
+    "verified_resampled_empty": false,
+    "empty_or_missing_cases": []
+  },
+  "train": {
+    "case_count": 2,
+    "split_counts": {
+      "train": 2
+    },
+    "selection_mode_counts": {
+      "manifest_target_label": 2
+    },
+    "multi_component_case_count": 0,
+    "multi_component_case_fraction": 0.0,
+    "direct_endpoint_selection_count": 0,
+    "fallback_selection_count": 0,
+    "all_positive_voxel_summary": {
+      "count": 2,
+      "min": 714.0,
+      "max": 2501.0,
+      "mean": 1607.5,
+      "median": 1607.5
+    },
+    "selected_target_voxel_summary": {
+      "count": 2,
+      "min": 714.0,
+      "max": 2501.0,
+      "mean": 1607.5,
+      "median": 1607.5
+    },
+    "selected_fraction_of_all_positive_summary": {
+      "count": 2,
+      "min": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "median": 1.0
+    },
+    "component_count_summary": {
+      "count": 2,
+      "min": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "median": 1.0
+    },
+    "cases": [
+      {
+        "case_id": "CT_Lesion_000001_02_01_008-023",
+        "split": "train",
+        "selection_mode": "manifest_target_label",
+        "component_count": 1,
+        "all_positive_voxels": 2501,
+        "selected_target_voxels": 2501,
+        "selected_fraction_of_all_positive": 1.0,
+        "selected_label_value": 1,
+        "selected_component_id": 1,
+        "selected_line_overlap": null,
+        "selected_endpoint_distance": null
+      },
+      {
+        "case_id": "CT_Lesion_000002_02_01_044-083",
+        "split": "train",
+        "selection_mode": "manifest_target_label",
+        "component_count": 1,
+        "all_positive_voxels": 714,
+        "selected_target_voxels": 714,
+        "selected_fraction_of_all_positive": 1.0,
+        "selected_label_value": 1,
+        "selected_component_id": 1,
+        "selected_line_overlap": null,
+        "selected_endpoint_distance": null
+      }
+    ]
+  },
+  "val": {
+    "case_count": 2,
+    "split_counts": {
+      "val": 2
+    },
+    "selection_mode_counts": {
+      "manifest_target_label": 2
+    },
+    "multi_component_case_count": 1,
+    "multi_component_case_fraction": 0.5,
+    "direct_endpoint_selection_count": 0,
+    "fallback_selection_count": 0,
+    "all_positive_voxel_summary": {
+      "count": 2,
+      "min": 3068.0,
+      "max": 11577.0,
+      "mean": 7322.5,
+      "median": 7322.5
+    },
+    "selected_target_voxel_summary": {
+      "count": 2,
+      "min": 1702.0,
+      "max": 3068.0,
+      "mean": 2385.0,
+      "median": 2385.0
+    },
+    "selected_fraction_of_all_positive_summary": {
+      "count": 2,
+      "min": 0.14701563119888306,
+      "max": 1.0,
+      "mean": 0.5735077857971191,
+      "median": 0.5735077857971191
+    },
+    "component_count_summary": {
+      "count": 2,
+      "min": 1.0,
+      "max": 4.0,
+      "mean": 2.5,
+      "median": 2.5
+    },
+    "cases": [
+      {
+        "case_id": "CT_Lesion_FLARE23Ts_0001",
+        "split": "val",
+        "selection_mode": "manifest_target_label",
+        "component_count": 1,
+        "all_positive_voxels": 3068,
+        "selected_target_voxels": 3068,
+        "selected_fraction_of_all_positive": 1.0,
+        "selected_label_value": 1,
+        "selected_component_id": 1,
+        "selected_line_overlap": null,
+        "selected_endpoint_distance": null
+      },
+      {
+        "case_id": "CT_Lesion_FLARE23Ts_0003__recist1",
+        "split": "val",
+        "selection_mode": "manifest_target_label",
+        "component_count": 4,
+        "all_positive_voxels": 11577,
+        "selected_target_voxels": 1702,
+        "selected_fraction_of_all_positive": 0.14701563444761165,
+        "selected_label_value": 1,
+        "selected_component_id": 1,
+        "selected_line_overlap": null,
+        "selected_endpoint_distance": null
+      }
+    ]
+  }
+}

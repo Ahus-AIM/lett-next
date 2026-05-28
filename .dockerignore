@@ -1,0 +1,11 @@
+.git/
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+artifacts/lett-next.tar.gz
+lett_next_outputs/
+PanCancerSeg_Test/
+data/
+runs/
+tests/

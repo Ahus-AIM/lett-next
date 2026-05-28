@@ -1,0 +1,25 @@
+manifest_path: data/prepared/train_manifest.json
+combine_manifest_path: data/prepared/recist_manifest.json
+pants_enable: true
+pants_data_dir: data/pants
+train_data_dir: data/train_npz
+val_data_dir: data/validation_npz
+
+epochs: 25
+eval_every: 3
+batch_size: 6
+learning_rate: 0.001
+num_workers: 8
+max_train_cases: null
+max_val_cases: 49
+seed: 43
+threshold: 0.5
+train_log_every_steps: 50
+
+normalization_stats_path: artifacts/normalization_stats.json
+target_audit_path: artifacts/target_audit.json
+case_cache_dir: data/prepared/cache/task2_resampled_1p0_1p0_2p4_component_aux_split_v1
+
+train_run_suffix: lett-next-mednext-f32-xy1p0-z2p4-z72xy160-25ep-b6-w8-3gpu
+train_cuda_visible_devices: 0,1,2
+train_nproc_per_node: 3

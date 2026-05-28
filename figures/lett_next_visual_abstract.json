@@ -1,0 +1,20 @@
+{
+  "case_id": "CT_Lesion_FLARE23Ts_0003",
+  "label_value": 2,
+  "slice_index": 55,
+  "input_path": "data/validation_npz/validation_public_npz/CT_Lesion_FLARE23Ts_0003.npz",
+  "prediction_path": "results/submission_validation_public/CT_Lesion_FLARE23Ts_0003.nii.gz",
+  "crop_y": [
+    211,
+    457
+  ],
+  "crop_x": [
+    214,
+    460
+  ],
+  "outputs": {
+    "png": "figures/lett_next_visual_abstract.png",
+    "pdf": "figures/lett_next_visual_abstract.pdf",
+    "svg": "figures/lett_next_visual_abstract.svg"
+  }
+}
