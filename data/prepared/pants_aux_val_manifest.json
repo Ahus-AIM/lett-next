@@ -1,0 +1,1947 @@
+{
+  "dataset_mode": "npz+pants_stratified882",
+  "combine_manifest_path": "data/prepared/recist_manifest.json",
+  "pants": {
+    "pants_root_path": "data/pants",
+    "label_case_folders_scanned": 9000,
+    "positive_lesion_cases_available": 882,
+    "skipped": {
+      "missing_image": 0,
+      "missing_label": 0,
+      "empty_lesion_mask": 8118,
+      "load_failure": 0
+    },
+    "requested_subset_size": 5000,
+    "subset_size": 882,
+    "selected_all_available_positive_cases": true,
+    "subset_policy": "stratified_geometry_v1",
+    "subset_selection": "deterministic_ranked_buckets",
+    "seed": 13,
+    "crop_size_zyx": [
+      96,
+      128,
+      128
+    ],
+    "requested_bucket_counts": {
+      "representative": 353,
+      "large_volume": 221,
+      "high_z_extent": 176,
+      "small_volume": 88,
+      "crop_risk": 44
+    },
+    "selected_bucket_counts": {
+      "large_volume": 221,
+      "high_z_extent": 176,
+      "small_volume": 88,
+      "crop_risk": 44,
+      "representative": 353
+    },
+    "class_mapping": {
+      "28": "pancreatic_lesion"
+    },
+    "prompt_source": "derived_from_pants_pancreatic_lesion",
+    "excluded_case_ids": [
+      "PanTS_00000128",
+      "PanTS_00001488",
+      "PanTS_00003679",
+      "PanTS_00004825",
+      "PanTS_00007299",
+      "PanTS_00007995",
+      "PanTS_00008913"
+    ],
+    "excluded_case_count": 7,
+    "record_count_after_exclusion": 875,
+    "component_aware_manifest": true,
+    "selected_case_count_after_exclusion": 875,
+    "selected_component_record_count": 1199,
+    "component_rebuild_skipped": {
+      "missing_case_dir": 0,
+      "missing_image": 0,
+      "missing_label": 0,
+      "empty_lesion_mask": 0,
+      "load_failure": 0
+    }
+  },
+  "excluded_case_ids": [
+    "PanTS_00000128",
+    "PanTS_00001488",
+    "PanTS_00003679",
+    "PanTS_00004825",
+    "PanTS_00007299",
+    "PanTS_00007995",
+    "PanTS_00008913"
+  ],
+  "exclusion_reason": "PanTS NIfTI label affine does not match image affine",
+  "dropped_empty_after_resample_records": [
+    {
+      "case_id": "PanTS_00000044",
+      "source": "pants",
+      "reason": "selected target empty after task2_anisotropic resampling to 1.6x1.6x2.4"
+    }
+  ],
+  "a1_cache_ready_filter": {
+    "source_manifest_path": "data/prepared/pants_manifest.json",
+    "removed_record_count": 347,
+    "removed_case_ids": [
+      "PanTS_00000047__lesion_component1",
+      "PanTS_00000047__lesion_component2",
+      "PanTS_00000047__lesion_component3",
+      "PanTS_00000047__lesion_component4",
+      "PanTS_00000099__lesion_component1",
+      "PanTS_00000099__lesion_component2",
+      "PanTS_00000224__lesion_component1",
+      "PanTS_00000224__lesion_component2",
+      "PanTS_00000246",
+      "PanTS_00000270",
+      "PanTS_00000363",
+      "PanTS_00000368",
+      "PanTS_00000482__lesion_component1",
+      "PanTS_00000482__lesion_component2",
+      "PanTS_00000482__lesion_component3",
+      "PanTS_00000554",
+      "PanTS_00000557__lesion_component1",
+      "PanTS_00000557__lesion_component2",
+      "PanTS_00000557__lesion_component3",
+      "PanTS_00000592",
+      "PanTS_00000623__lesion_component1",
+      "PanTS_00000623__lesion_component2",
+      "PanTS_00000623__lesion_component3",
+      "PanTS_00000696",
+      "PanTS_00000871__lesion_component1",
+      "PanTS_00000871__lesion_component2",
+      "PanTS_00000871__lesion_component3",
+      "PanTS_00000871__lesion_component4",
+      "PanTS_00000911",
+      "PanTS_00001021__lesion_component1",
+      "PanTS_00001021__lesion_component2",
+      "PanTS_00001070",
+      "PanTS_00001111",
+      "PanTS_00001121",
+      "PanTS_00001197",
+      "PanTS_00001326",
+      "PanTS_00001327__lesion_component1",
+      "PanTS_00001327__lesion_component2",
+      "PanTS_00001352__lesion_component1",
+      "PanTS_00001352__lesion_component2",
+      "PanTS_00001436__lesion_component1",
+      "PanTS_00001436__lesion_component2",
+      "PanTS_00001472",
+      "PanTS_00001477__lesion_component1",
+      "PanTS_00001477__lesion_component2",
+      "PanTS_00001502__lesion_component1",
+      "PanTS_00001502__lesion_component2",
+      "PanTS_00001645",
+      "PanTS_00001655",
+      "PanTS_00001672",
+      "PanTS_00001802",
+      "PanTS_00001819",
+      "PanTS_00001829",
+      "PanTS_00001876__lesion_component1",
+      "PanTS_00001876__lesion_component2",
+      "PanTS_00001946",
+      "PanTS_00001973",
+      "PanTS_00002071",
+      "PanTS_00002081",
+      "PanTS_00002091",
+      "PanTS_00002094",
+      "PanTS_00002095__lesion_component1",
+      "PanTS_00002095__lesion_component2",
+      "PanTS_00002095__lesion_component3",
+      "PanTS_00002095__lesion_component4",
+      "PanTS_00002098",
+      "PanTS_00002107",
+      "PanTS_00002123__lesion_component1",
+      "PanTS_00002123__lesion_component2",
+      "PanTS_00002142__lesion_component1",
+      "PanTS_00002142__lesion_component2",
+      "PanTS_00002177",
+      "PanTS_00002187__lesion_component1",
+      "PanTS_00002187__lesion_component2",
+      "PanTS_00002211",
+      "PanTS_00002269",
+      "PanTS_00002304",
+      "PanTS_00002388",
+      "PanTS_00002435",
+      "PanTS_00002468",
+      "PanTS_00002479__lesion_component1",
+      "PanTS_00002479__lesion_component2",
+      "PanTS_00002479__lesion_component3",
+      "PanTS_00002479__lesion_component4",
+      "PanTS_00002479__lesion_component5",
+      "PanTS_00002750__lesion_component1",
+      "PanTS_00002750__lesion_component2",
+      "PanTS_00002779",
+      "PanTS_00002829",
+      "PanTS_00002855",
+      "PanTS_00002875__lesion_component1",
+      "PanTS_00002875__lesion_component2",
+      "PanTS_00002889__lesion_component1",
+      "PanTS_00002889__lesion_component2",
+      "PanTS_00002916",
+      "PanTS_00002963__lesion_component1",
+      "PanTS_00002963__lesion_component2",
+      "PanTS_00002963__lesion_component3",
+      "PanTS_00002963__lesion_component4",
+      "PanTS_00002963__lesion_component5",
+      "PanTS_00002963__lesion_component6",
+      "PanTS_00002963__lesion_component7",
+      "PanTS_00002969",
+      "PanTS_00002993",
+      "PanTS_00003051",
+      "PanTS_00003059",
+      "PanTS_00003072__lesion_component1",
+      "PanTS_00003072__lesion_component2",
+      "PanTS_00003072__lesion_component3",
+      "PanTS_00003072__lesion_component4",
+      "PanTS_00003072__lesion_component5",
+      "PanTS_00003148",
+      "PanTS_00003187__lesion_component1",
+      "PanTS_00003187__lesion_component2",
+      "PanTS_00003187__lesion_component3",
+      "PanTS_00003187__lesion_component4",
+      "PanTS_00003187__lesion_component5",
+      "PanTS_00003187__lesion_component6",
+      "PanTS_00003187__lesion_component7",
+      "PanTS_00003187__lesion_component8",
+      "PanTS_00003205",
+      "PanTS_00003229",
+      "PanTS_00003265",
+      "PanTS_00003370",
+      "PanTS_00003398",
+      "PanTS_00003485__lesion_component1",
+      "PanTS_00003485__lesion_component2",
+      "PanTS_00003493__lesion_component1",
+      "PanTS_00003493__lesion_component2",
+      "PanTS_00003493__lesion_component3",
+      "PanTS_00003587",
+      "PanTS_00003588",
+      "PanTS_00003615",
+      "PanTS_00003639__lesion_component1",
+      "PanTS_00003639__lesion_component2",
+      "PanTS_00003706",
+      "PanTS_00003736",
+      "PanTS_00003937",
+      "PanTS_00003953",
+      "PanTS_00004069__lesion_component1",
+      "PanTS_00004069__lesion_component2",
+      "PanTS_00004069__lesion_component3",
+      "PanTS_00004078__lesion_component1",
+      "PanTS_00004078__lesion_component2",
+      "PanTS_00004208",
+      "PanTS_00004243",
+      "PanTS_00004262",
+      "PanTS_00004267__lesion_component1",
+      "PanTS_00004267__lesion_component2",
+      "PanTS_00004301",
+      "PanTS_00004313__lesion_component1",
+      "PanTS_00004313__lesion_component2",
+      "PanTS_00004329__lesion_component1",
+      "PanTS_00004329__lesion_component2",
+      "PanTS_00004329__lesion_component3",
+      "PanTS_00004329__lesion_component4",
+      "PanTS_00004467",
+      "PanTS_00004503__lesion_component1",
+      "PanTS_00004503__lesion_component2",
+      "PanTS_00004503__lesion_component3",
+      "PanTS_00004503__lesion_component4",
+      "PanTS_00004503__lesion_component5",
+      "PanTS_00004517",
+      "PanTS_00004523",
+      "PanTS_00004571",
+      "PanTS_00004677",
+      "PanTS_00004681",
+      "PanTS_00004703",
+      "PanTS_00004724",
+      "PanTS_00004788",
+      "PanTS_00004856",
+      "PanTS_00005017",
+      "PanTS_00005041__lesion_component1",
+      "PanTS_00005041__lesion_component2",
+      "PanTS_00005043",
+      "PanTS_00005085",
+      "PanTS_00005207",
+      "PanTS_00005390__lesion_component1",
+      "PanTS_00005390__lesion_component2",
+      "PanTS_00005390__lesion_component3",
+      "PanTS_00005390__lesion_component4",
+      "PanTS_00005390__lesion_component5",
+      "PanTS_00005390__lesion_component6",
+      "PanTS_00005391",
+      "PanTS_00005420",
+      "PanTS_00005422__lesion_component1",
+      "PanTS_00005422__lesion_component2",
+      "PanTS_00005583",
+      "PanTS_00005623",
+      "PanTS_00005641",
+      "PanTS_00005643__lesion_component1",
+      "PanTS_00005643__lesion_component2",
+      "PanTS_00005665__lesion_component1",
+      "PanTS_00005665__lesion_component2",
+      "PanTS_00005665__lesion_component3",
+      "PanTS_00005665__lesion_component4",
+      "PanTS_00005665__lesion_component5",
+      "PanTS_00005665__lesion_component6",
+      "PanTS_00005693",
+      "PanTS_00005731",
+      "PanTS_00005757",
+      "PanTS_00005785",
+      "PanTS_00005806",
+      "PanTS_00005832",
+      "PanTS_00005854__lesion_component1",
+      "PanTS_00005854__lesion_component2",
+      "PanTS_00005864",
+      "PanTS_00005985__lesion_component1",
+      "PanTS_00005985__lesion_component2",
+      "PanTS_00005985__lesion_component3",
+      "PanTS_00005985__lesion_component4",
+      "PanTS_00005985__lesion_component5",
+      "PanTS_00005985__lesion_component6",
+      "PanTS_00005985__lesion_component7",
+      "PanTS_00005985__lesion_component8",
+      "PanTS_00005995",
+      "PanTS_00006000",
+      "PanTS_00006193",
+      "PanTS_00006222",
+      "PanTS_00006257__lesion_component1",
+      "PanTS_00006257__lesion_component2",
+      "PanTS_00006257__lesion_component3",
+      "PanTS_00006282",
+      "PanTS_00006340",
+      "PanTS_00006353__lesion_component1",
+      "PanTS_00006353__lesion_component2",
+      "PanTS_00006353__lesion_component3",
+      "PanTS_00006353__lesion_component4",
+      "PanTS_00006394",
+      "PanTS_00006413",
+      "PanTS_00006422",
+      "PanTS_00006430",
+      "PanTS_00006483",
+      "PanTS_00006576__lesion_component1",
+      "PanTS_00006576__lesion_component2",
+      "PanTS_00006654",
+      "PanTS_00006710",
+      "PanTS_00006746",
+      "PanTS_00006795",
+      "PanTS_00006811",
+      "PanTS_00006837",
+      "PanTS_00006854",
+      "PanTS_00006917__lesion_component1",
+      "PanTS_00006917__lesion_component2",
+      "PanTS_00006917__lesion_component3",
+      "PanTS_00006917__lesion_component4",
+      "PanTS_00006982",
+      "PanTS_00007002",
+      "PanTS_00007044__lesion_component1",
+      "PanTS_00007044__lesion_component2",
+      "PanTS_00007044__lesion_component3",
+      "PanTS_00007044__lesion_component4",
+      "PanTS_00007044__lesion_component5",
+      "PanTS_00007044__lesion_component6",
+      "PanTS_00007071",
+      "PanTS_00007095",
+      "PanTS_00007099",
+      "PanTS_00007105",
+      "PanTS_00007122",
+      "PanTS_00007130",
+      "PanTS_00007167",
+      "PanTS_00007190",
+      "PanTS_00007227",
+      "PanTS_00007242",
+      "PanTS_00007305",
+      "PanTS_00007308",
+      "PanTS_00007329",
+      "PanTS_00007334",
+      "PanTS_00007361",
+      "PanTS_00007472",
+      "PanTS_00007516",
+      "PanTS_00007532__lesion_component1",
+      "PanTS_00007532__lesion_component2",
+      "PanTS_00007536",
+      "PanTS_00007558",
+      "PanTS_00007577",
+      "PanTS_00007583",
+      "PanTS_00007602",
+      "PanTS_00007627",
+      "PanTS_00007660",
+      "PanTS_00007831__lesion_component1",
+      "PanTS_00007831__lesion_component2",
+      "PanTS_00007862",
+      "PanTS_00007863",
+      "PanTS_00007868",
+      "PanTS_00007933",
+      "PanTS_00007947",
+      "PanTS_00007960",
+      "PanTS_00008048",
+      "PanTS_00008059",
+      "PanTS_00008184",
+      "PanTS_00008234__lesion_component1",
+      "PanTS_00008234__lesion_component2",
+      "PanTS_00008234__lesion_component3",
+      "PanTS_00008234__lesion_component4",
+      "PanTS_00008234__lesion_component5",
+      "PanTS_00008234__lesion_component6",
+      "PanTS_00008238",
+      "PanTS_00008292__lesion_component1",
+      "PanTS_00008292__lesion_component2",
+      "PanTS_00008301",
+      "PanTS_00008302",
+      "PanTS_00008339",
+      "PanTS_00008354",
+      "PanTS_00008407__lesion_component1",
+      "PanTS_00008407__lesion_component2",
+      "PanTS_00008407__lesion_component3",
+      "PanTS_00008451__lesion_component1",
+      "PanTS_00008451__lesion_component10",
+      "PanTS_00008451__lesion_component11",
+      "PanTS_00008451__lesion_component12",
+      "PanTS_00008451__lesion_component13",
+      "PanTS_00008451__lesion_component14",
+      "PanTS_00008451__lesion_component15",
+      "PanTS_00008451__lesion_component16",
+      "PanTS_00008451__lesion_component17",
+      "PanTS_00008451__lesion_component2",
+      "PanTS_00008451__lesion_component3",
+      "PanTS_00008451__lesion_component4",
+      "PanTS_00008451__lesion_component5",
+      "PanTS_00008451__lesion_component6",
+      "PanTS_00008451__lesion_component7",
+      "PanTS_00008451__lesion_component8",
+      "PanTS_00008451__lesion_component9",
+      "PanTS_00008574__lesion_component1",
+      "PanTS_00008574__lesion_component2",
+      "PanTS_00008577",
+      "PanTS_00008628__lesion_component1",
+      "PanTS_00008628__lesion_component2",
+      "PanTS_00008633",
+      "PanTS_00008658__lesion_component1",
+      "PanTS_00008658__lesion_component10",
+      "PanTS_00008658__lesion_component11",
+      "PanTS_00008658__lesion_component12",
+      "PanTS_00008658__lesion_component13",
+      "PanTS_00008658__lesion_component14",
+      "PanTS_00008658__lesion_component15",
+      "PanTS_00008658__lesion_component2",
+      "PanTS_00008658__lesion_component3",
+      "PanTS_00008658__lesion_component4",
+      "PanTS_00008658__lesion_component5",
+      "PanTS_00008658__lesion_component6",
+      "PanTS_00008658__lesion_component7",
+      "PanTS_00008658__lesion_component8",
+      "PanTS_00008658__lesion_component9",
+      "PanTS_00008839",
+      "PanTS_00008892"
+    ],
+    "reason": "excluded records with neither canonical aux case cache nor legacy crop-keyed fallback after A1 aux cache precompute"
+  },
+  "record_count": 50,
+  "records": [
+    {
+      "case_id": "PanTS_00000451",
+      "image_path": "data/pants/ImageTr/PanTS_00000451/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00000451/combined_labels.nii.gz",
+      "spacing_xyz": [
+        1.5,
+        1.5,
+        1.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          129.0,
+          114.0,
+          84.0
+        ],
+        [
+          132.0,
+          122.0,
+          84.0
+        ]
+      ],
+      "recist_slice_index": 84,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 132
+    },
+    {
+      "case_id": "PanTS_00000605",
+      "image_path": "data/pants/ImageTr/PanTS_00000605/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00000605/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.6601560115814209,
+        0.6601560115814209,
+        3.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          255.0,
+          206.0,
+          94.0
+        ],
+        [
+          280.0,
+          228.0,
+          94.0
+        ]
+      ],
+      "recist_slice_index": 94,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 3948
+    },
+    {
+      "case_id": "PanTS_00001048",
+      "image_path": "data/pants/ImageTr/PanTS_00001048/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00001048/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7319999933242798,
+        0.7319999933242798,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          272.0,
+          203.0,
+          51.0
+        ],
+        [
+          257.0,
+          221.0,
+          51.0
+        ]
+      ],
+      "recist_slice_index": 51,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 735
+    },
+    {
+      "case_id": "PanTS_00001053",
+      "image_path": "data/pants/ImageTr/PanTS_00001053/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00001053/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.703125,
+        0.703125,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          184.0,
+          196.0,
+          29.0
+        ],
+        [
+          205.0,
+          181.0,
+          29.0
+        ]
+      ],
+      "recist_slice_index": 29,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 914
+    },
+    {
+      "case_id": "PanTS_00001297",
+      "image_path": "data/pants/ImageTr/PanTS_00001297/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00001297/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.8789060115814209,
+        0.8789060115814209,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          195.0,
+          207.0,
+          36.0
+        ],
+        [
+          222.0,
+          195.0,
+          36.0
+        ]
+      ],
+      "recist_slice_index": 36,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 3287
+    },
+    {
+      "case_id": "PanTS_00001727__lesion_component2",
+      "image_path": "data/pants/ImageTr/PanTS_00001727/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00001727/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.75,
+        0.75,
+        3.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          232.0,
+          210.0,
+          108.0
+        ],
+        [
+          227.0,
+          230.0,
+          108.0
+        ]
+      ],
+      "recist_slice_index": 108,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 2,
+      "target_voxel_count": 984
+    },
+    {
+      "case_id": "PanTS_00001787",
+      "image_path": "data/pants/ImageTr/PanTS_00001787/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00001787/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.8886719942092896,
+        0.8886719942092896,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          304.0,
+          208.0,
+          35.0
+        ],
+        [
+          299.0,
+          226.0,
+          35.0
+        ]
+      ],
+      "recist_slice_index": 35,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 267
+    },
+    {
+      "case_id": "PanTS_00001922",
+      "image_path": "data/pants/ImageTr/PanTS_00001922/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00001922/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7421879768371582,
+        0.7421879768371582,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          225.0,
+          205.0,
+          26.0
+        ],
+        [
+          230.0,
+          223.0,
+          26.0
+        ]
+      ],
+      "recist_slice_index": 26,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 1339
+    },
+    {
+      "case_id": "PanTS_00002362__lesion_component2",
+      "image_path": "data/pants/ImageTr/PanTS_00002362/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00002362/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.6620000004768372,
+        0.6620000004768372,
+        0.800000011920929
+      ],
+      "recist_endpoints_xyz": [
+        [
+          202.0,
+          151.0,
+          76.0
+        ],
+        [
+          224.0,
+          126.0,
+          76.0
+        ]
+      ],
+      "recist_slice_index": 76,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 2,
+      "target_voxel_count": 16358
+    },
+    {
+      "case_id": "PanTS_00002417__lesion_component2",
+      "image_path": "data/pants/ImageTr/PanTS_00002417/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00002417/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7324219942092896,
+        0.7324219942092896,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          217.0,
+          216.0,
+          69.0
+        ],
+        [
+          219.0,
+          192.0,
+          69.0
+        ]
+      ],
+      "recist_slice_index": 69,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 2,
+      "target_voxel_count": 361
+    },
+    {
+      "case_id": "PanTS_00002456",
+      "image_path": "data/pants/ImageTr/PanTS_00002456/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00002456/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.84375,
+        0.84375,
+        7.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          231.0,
+          221.0,
+          15.0
+        ],
+        [
+          243.0,
+          224.0,
+          15.0
+        ]
+      ],
+      "recist_slice_index": 15,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 73
+    },
+    {
+      "case_id": "PanTS_00002592",
+      "image_path": "data/pants/ImageTr/PanTS_00002592/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00002592/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7597659826278687,
+        0.7597659826278687,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          211.0,
+          220.0,
+          21.0
+        ],
+        [
+          214.0,
+          200.0,
+          21.0
+        ]
+      ],
+      "recist_slice_index": 21,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 461
+    },
+    {
+      "case_id": "PanTS_00002906",
+      "image_path": "data/pants/ImageTr/PanTS_00002906/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00002906/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.78125,
+        0.78125,
+        0.800000011920929
+      ],
+      "recist_endpoints_xyz": [
+        [
+          277.0,
+          225.0,
+          36.0
+        ],
+        [
+          284.0,
+          215.0,
+          36.0
+        ]
+      ],
+      "recist_slice_index": 36,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 932
+    },
+    {
+      "case_id": "PanTS_00002915",
+      "image_path": "data/pants/ImageTr/PanTS_00002915/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00002915/combined_labels.nii.gz",
+      "spacing_xyz": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          240.0,
+          190.0,
+          309.0
+        ],
+        [
+          213.0,
+          188.0,
+          309.0
+        ]
+      ],
+      "recist_slice_index": 309,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 1554
+    },
+    {
+      "case_id": "PanTS_00003147",
+      "image_path": "data/pants/ImageTr/PanTS_00003147/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00003147/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.6132810115814209,
+        0.6132810115814209,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          233.0,
+          202.0,
+          40.0
+        ],
+        [
+          265.0,
+          220.0,
+          40.0
+        ]
+      ],
+      "recist_slice_index": 40,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 6002
+    },
+    {
+      "case_id": "PanTS_00003343",
+      "image_path": "data/pants/ImageTr/PanTS_00003343/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00003343/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.8105469942092896,
+        0.8105469942092896,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          179.0,
+          148.0,
+          56.0
+        ],
+        [
+          199.0,
+          137.0,
+          56.0
+        ]
+      ],
+      "recist_slice_index": 56,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 2393
+    },
+    {
+      "case_id": "PanTS_00003416__lesion_component4",
+      "image_path": "data/pants/ImageTr/PanTS_00003416/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00003416/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.8203120231628418,
+        0.8203120231628418,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          286.0,
+          178.0,
+          40.0
+        ],
+        [
+          264.0,
+          175.0,
+          40.0
+        ]
+      ],
+      "recist_slice_index": 40,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 4,
+      "target_voxel_count": 86
+    },
+    {
+      "case_id": "PanTS_00003595__lesion_component2",
+      "image_path": "data/pants/ImageTr/PanTS_00003595/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00003595/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7851560115814209,
+        0.7851560115814209,
+        1.25
+      ],
+      "recist_endpoints_xyz": [
+        [
+          348.0,
+          242.0,
+          32.0
+        ],
+        [
+          398.0,
+          232.0,
+          32.0
+        ]
+      ],
+      "recist_slice_index": 32,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 2,
+      "target_voxel_count": 19452
+    },
+    {
+      "case_id": "PanTS_00003654",
+      "image_path": "data/pants/ImageTr/PanTS_00003654/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00003654/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7820000052452087,
+        0.7820000052452087,
+        0.800000011920929
+      ],
+      "recist_endpoints_xyz": [
+        [
+          255.0,
+          158.0,
+          53.0
+        ],
+        [
+          350.0,
+          210.0,
+          53.0
+        ]
+      ],
+      "recist_slice_index": 53,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 174218
+    },
+    {
+      "case_id": "PanTS_00003672",
+      "image_path": "data/pants/ImageTr/PanTS_00003672/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00003672/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7109375,
+        0.7109375,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          254.0,
+          146.0,
+          131.0
+        ],
+        [
+          260.0,
+          158.0,
+          131.0
+        ]
+      ],
+      "recist_slice_index": 131,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 293
+    },
+    {
+      "case_id": "PanTS_00003684",
+      "image_path": "data/pants/ImageTr/PanTS_00003684/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00003684/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.6992189884185791,
+        0.6992189884185791,
+        1.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          280.0,
+          187.0,
+          73.0
+        ],
+        [
+          273.0,
+          208.0,
+          73.0
+        ]
+      ],
+      "recist_slice_index": 73,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 2834
+    },
+    {
+      "case_id": "PanTS_00003894",
+      "image_path": "data/pants/ImageTr/PanTS_00003894/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00003894/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.9765620231628418,
+        0.9765620231628418,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          248.0,
+          199.0,
+          35.0
+        ],
+        [
+          273.0,
+          191.0,
+          35.0
+        ]
+      ],
+      "recist_slice_index": 35,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 2443
+    },
+    {
+      "case_id": "PanTS_00003942",
+      "image_path": "data/pants/ImageTr/PanTS_00003942/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00003942/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7421875,
+        0.7421875,
+        0.800000011920929
+      ],
+      "recist_endpoints_xyz": [
+        [
+          215.0,
+          180.0,
+          57.0
+        ],
+        [
+          228.0,
+          184.0,
+          57.0
+        ]
+      ],
+      "recist_slice_index": 57,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 1316
+    },
+    {
+      "case_id": "PanTS_00004454__lesion_component2",
+      "image_path": "data/pants/ImageTr/PanTS_00004454/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00004454/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.83203125,
+        0.83203125,
+        0.699999988079071
+      ],
+      "recist_endpoints_xyz": [
+        [
+          275.0,
+          262.0,
+          88.0
+        ],
+        [
+          264.0,
+          263.0,
+          88.0
+        ]
+      ],
+      "recist_slice_index": 88,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 2,
+      "target_voxel_count": 645
+    },
+    {
+      "case_id": "PanTS_00004753",
+      "image_path": "data/pants/ImageTr/PanTS_00004753/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00004753/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7089840173721313,
+        0.7089840173721313,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          219.0,
+          210.0,
+          15.0
+        ],
+        [
+          195.0,
+          181.0,
+          15.0
+        ]
+      ],
+      "recist_slice_index": 15,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 2450
+    },
+    {
+      "case_id": "PanTS_00005250",
+      "image_path": "data/pants/ImageTr/PanTS_00005250/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00005250/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.5247395634651184,
+        0.5247395634651184,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          367.0,
+          294.0,
+          66.0
+        ],
+        [
+          395.0,
+          278.0,
+          66.0
+        ]
+      ],
+      "recist_slice_index": 66,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 1290
+    },
+    {
+      "case_id": "PanTS_00005266",
+      "image_path": "data/pants/ImageTr/PanTS_00005266/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00005266/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.78125,
+        0.78125,
+        0.800000011920929
+      ],
+      "recist_endpoints_xyz": [
+        [
+          215.0,
+          243.0,
+          125.0
+        ],
+        [
+          248.0,
+          228.0,
+          125.0
+        ]
+      ],
+      "recist_slice_index": 125,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 5356
+    },
+    {
+      "case_id": "PanTS_00005558__lesion_component1",
+      "image_path": "data/pants/ImageTr/PanTS_00005558/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00005558/combined_labels.nii.gz",
+      "spacing_xyz": [
+        1.5000001192092896,
+        1.4999998807907104,
+        1.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          209.0,
+          99.0,
+          64.0
+        ],
+        [
+          214.0,
+          107.0,
+          64.0
+        ]
+      ],
+      "recist_slice_index": 64,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 114
+    },
+    {
+      "case_id": "PanTS_00005677",
+      "image_path": "data/pants/ImageTr/PanTS_00005677/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00005677/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.68359375,
+        0.68359375,
+        0.800000011920929
+      ],
+      "recist_endpoints_xyz": [
+        [
+          232.0,
+          171.0,
+          83.0
+        ],
+        [
+          239.0,
+          184.0,
+          83.0
+        ]
+      ],
+      "recist_slice_index": 83,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 1805
+    },
+    {
+      "case_id": "PanTS_00005905",
+      "image_path": "data/pants/ImageTr/PanTS_00005905/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00005905/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7421875,
+        0.7421875,
+        3.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          305.0,
+          134.0,
+          129.0
+        ],
+        [
+          362.0,
+          160.0,
+          129.0
+        ]
+      ],
+      "recist_slice_index": 129,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 2975
+    },
+    {
+      "case_id": "PanTS_00006519",
+      "image_path": "data/pants/ImageTr/PanTS_00006519/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00006519/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.8632810115814209,
+        0.8632810115814209,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          196.0,
+          190.0,
+          26.0
+        ],
+        [
+          248.0,
+          175.0,
+          26.0
+        ]
+      ],
+      "recist_slice_index": 26,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 12934
+    },
+    {
+      "case_id": "PanTS_00006754",
+      "image_path": "data/pants/ImageTr/PanTS_00006754/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00006754/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7617189884185791,
+        0.7617189884185791,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          144.0,
+          177.0,
+          22.0
+        ],
+        [
+          150.0,
+          209.0,
+          22.0
+        ]
+      ],
+      "recist_slice_index": 22,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 2343
+    },
+    {
+      "case_id": "PanTS_00006755__lesion_component2",
+      "image_path": "data/pants/ImageTr/PanTS_00006755/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00006755/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7382810115814209,
+        0.7382810115814209,
+        0.800000011920929
+      ],
+      "recist_endpoints_xyz": [
+        [
+          261.0,
+          265.0,
+          63.0
+        ],
+        [
+          270.0,
+          282.0,
+          63.0
+        ]
+      ],
+      "recist_slice_index": 63,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 2,
+      "target_voxel_count": 1952
+    },
+    {
+      "case_id": "PanTS_00006987__lesion_component1",
+      "image_path": "data/pants/ImageTr/PanTS_00006987/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00006987/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.8203125,
+        0.8203125,
+        1.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          263.0,
+          114.0,
+          91.0
+        ],
+        [
+          294.0,
+          121.0,
+          91.0
+        ]
+      ],
+      "recist_slice_index": 91,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 10608
+    },
+    {
+      "case_id": "PanTS_00007102__lesion_component2",
+      "image_path": "data/pants/ImageTr/PanTS_00007102/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007102/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.8398439884185791,
+        0.8398439884185791,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          177.0,
+          130.0,
+          71.0
+        ],
+        [
+          187.0,
+          145.0,
+          71.0
+        ]
+      ],
+      "recist_slice_index": 71,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 2,
+      "target_voxel_count": 316
+    },
+    {
+      "case_id": "PanTS_00007201",
+      "image_path": "data/pants/ImageTr/PanTS_00007201/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007201/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.9375,
+        0.9375,
+        2.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          209.0,
+          164.0,
+          81.0
+        ],
+        [
+          211.0,
+          174.0,
+          81.0
+        ]
+      ],
+      "recist_slice_index": 81,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 196
+    },
+    {
+      "case_id": "PanTS_00007211__lesion_component1",
+      "image_path": "data/pants/ImageTr/PanTS_00007211/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007211/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7890620231628418,
+        0.7890620231628418,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          266.0,
+          210.0,
+          47.0
+        ],
+        [
+          289.0,
+          224.0,
+          47.0
+        ]
+      ],
+      "recist_slice_index": 47,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 2712
+    },
+    {
+      "case_id": "PanTS_00007437",
+      "image_path": "data/pants/ImageTr/PanTS_00007437/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007437/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        3.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          275.0,
+          209.0,
+          32.0
+        ],
+        [
+          292.0,
+          203.0,
+          32.0
+        ]
+      ],
+      "recist_slice_index": 32,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 1280
+    },
+    {
+      "case_id": "PanTS_00007451",
+      "image_path": "data/pants/ImageTr/PanTS_00007451/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007451/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.6171879768371582,
+        0.6171879768371582,
+        1.25
+      ],
+      "recist_endpoints_xyz": [
+        [
+          207.0,
+          125.0,
+          86.0
+        ],
+        [
+          255.0,
+          107.0,
+          86.0
+        ]
+      ],
+      "recist_slice_index": 86,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 7542
+    },
+    {
+      "case_id": "PanTS_00007485",
+      "image_path": "data/pants/ImageTr/PanTS_00007485/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007485/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.66796875,
+        0.66796875,
+        1.2000000476837158
+      ],
+      "recist_endpoints_xyz": [
+        [
+          212.0,
+          165.0,
+          30.0
+        ],
+        [
+          234.0,
+          130.0,
+          30.0
+        ]
+      ],
+      "recist_slice_index": 30,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 16942
+    },
+    {
+      "case_id": "PanTS_00007578__lesion_component1",
+      "image_path": "data/pants/ImageTr/PanTS_00007578/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007578/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.8964840173721313,
+        0.8964840173721313,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          312.0,
+          174.0,
+          66.0
+        ],
+        [
+          305.0,
+          185.0,
+          66.0
+        ]
+      ],
+      "recist_slice_index": 66,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 103
+    },
+    {
+      "case_id": "PanTS_00007588",
+      "image_path": "data/pants/ImageTr/PanTS_00007588/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007588/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7480469942092896,
+        0.7480469942092896,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          276.0,
+          237.0,
+          38.0
+        ],
+        [
+          250.0,
+          203.0,
+          38.0
+        ]
+      ],
+      "recist_slice_index": 38,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 7954
+    },
+    {
+      "case_id": "PanTS_00007651",
+      "image_path": "data/pants/ImageTr/PanTS_00007651/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007651/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.6445310115814209,
+        0.6445310115814209,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          204.0,
+          256.0,
+          59.0
+        ],
+        [
+          238.0,
+          277.0,
+          59.0
+        ]
+      ],
+      "recist_slice_index": 59,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 5012
+    },
+    {
+      "case_id": "PanTS_00007713",
+      "image_path": "data/pants/ImageTr/PanTS_00007713/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007713/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.6445310115814209,
+        0.6445310115814209,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          251.0,
+          233.0,
+          42.0
+        ],
+        [
+          290.0,
+          262.0,
+          42.0
+        ]
+      ],
+      "recist_slice_index": 42,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 11645
+    },
+    {
+      "case_id": "PanTS_00007728",
+      "image_path": "data/pants/ImageTr/PanTS_00007728/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007728/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.67578125,
+        0.67578125,
+        1.9999998807907104
+      ],
+      "recist_endpoints_xyz": [
+        [
+          281.0,
+          166.0,
+          132.0
+        ],
+        [
+          232.0,
+          147.0,
+          132.0
+        ]
+      ],
+      "recist_slice_index": 132,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 14171
+    },
+    {
+      "case_id": "PanTS_00007765",
+      "image_path": "data/pants/ImageTr/PanTS_00007765/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00007765/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7910159826278687,
+        0.7910159826278687,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          235.0,
+          246.0,
+          30.0
+        ],
+        [
+          286.0,
+          231.0,
+          30.0
+        ]
+      ],
+      "recist_slice_index": 30,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 13503
+    },
+    {
+      "case_id": "PanTS_00008266",
+      "image_path": "data/pants/ImageTr/PanTS_00008266/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00008266/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7285159826278687,
+        0.7285159826278687,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          126.0,
+          175.0,
+          66.0
+        ],
+        [
+          141.0,
+          153.0,
+          66.0
+        ]
+      ],
+      "recist_slice_index": 66,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 1009
+    },
+    {
+      "case_id": "PanTS_00008328",
+      "image_path": "data/pants/ImageTr/PanTS_00008328/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00008328/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.9179689884185791,
+        0.9179689884185791,
+        5.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          100.0,
+          147.0,
+          23.0
+        ],
+        [
+          103.0,
+          157.0,
+          23.0
+        ]
+      ],
+      "recist_slice_index": 23,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 74
+    },
+    {
+      "case_id": "PanTS_00008476",
+      "image_path": "data/pants/ImageTr/PanTS_00008476/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00008476/combined_labels.nii.gz",
+      "spacing_xyz": [
+        0.7363280057907104,
+        0.7363280057907104,
+        2.5
+      ],
+      "recist_endpoints_xyz": [
+        [
+          264.0,
+          226.0,
+          47.0
+        ],
+        [
+          276.0,
+          203.0,
+          47.0
+        ]
+      ],
+      "recist_slice_index": 47,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 1,
+      "target_voxel_count": 3263
+    },
+    {
+      "case_id": "PanTS_00008922__lesion_component2",
+      "image_path": "data/pants/ImageTr/PanTS_00008922/ct.nii.gz",
+      "label_path": "data/pants/LabelTr/PanTS_00008922/combined_labels.nii.gz",
+      "spacing_xyz": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "recist_endpoints_xyz": [
+        [
+          270.0,
+          293.0,
+          48.0
+        ],
+        [
+          237.0,
+          287.0,
+          48.0
+        ]
+      ],
+      "recist_slice_index": 48,
+      "split": "aux_val",
+      "source": "pants",
+      "prompt_source": "derived_from_pants_pancreatic_lesion",
+      "target_label_value": 1,
+      "target_component_id": 2,
+      "target_voxel_count": 4218
+    }
+  ],
+  "aux_eval_split": {
+    "source_manifest": "data/prepared/cache_ready_manifest.json",
+    "seed": 43,
+    "requested_count": 50,
+    "selected_count": 50,
+    "selected_case_ids": [
+      "PanTS_00000451",
+      "PanTS_00000605",
+      "PanTS_00001048",
+      "PanTS_00001053",
+      "PanTS_00001297",
+      "PanTS_00001727__lesion_component2",
+      "PanTS_00001787",
+      "PanTS_00001922",
+      "PanTS_00002362__lesion_component2",
+      "PanTS_00002417__lesion_component2",
+      "PanTS_00002456",
+      "PanTS_00002592",
+      "PanTS_00002906",
+      "PanTS_00002915",
+      "PanTS_00003147",
+      "PanTS_00003343",
+      "PanTS_00003416__lesion_component4",
+      "PanTS_00003595__lesion_component2",
+      "PanTS_00003654",
+      "PanTS_00003672",
+      "PanTS_00003684",
+      "PanTS_00003894",
+      "PanTS_00003942",
+      "PanTS_00004454__lesion_component2",
+      "PanTS_00004753",
+      "PanTS_00005250",
+      "PanTS_00005266",
+      "PanTS_00005558__lesion_component1",
+      "PanTS_00005677",
+      "PanTS_00005905",
+      "PanTS_00006519",
+      "PanTS_00006754",
+      "PanTS_00006755__lesion_component2",
+      "PanTS_00006987__lesion_component1",
+      "PanTS_00007102__lesion_component2",
+      "PanTS_00007201",
+      "PanTS_00007211__lesion_component1",
+      "PanTS_00007437",
+      "PanTS_00007451",
+      "PanTS_00007485",
+      "PanTS_00007578__lesion_component1",
+      "PanTS_00007588",
+      "PanTS_00007651",
+      "PanTS_00007713",
+      "PanTS_00007728",
+      "PanTS_00007765",
+      "PanTS_00008266",
+      "PanTS_00008328",
+      "PanTS_00008476",
+      "PanTS_00008922__lesion_component2"
+    ]
+  }
+}
