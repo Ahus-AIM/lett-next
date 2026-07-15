@@ -1,5 +1,7 @@
 # LETT-NeXt
 
+[![arXiv](https://img.shields.io/badge/arXiv-2606.30108-b31b1b.svg)](https://arxiv.org/abs/2606.30108)
+
 Lightweight Efficient Tumor Tracing with NeXt.
 
 Minimal LETT-NeXt reproducibility code for the FLARE25 RECIST-to-3D lesion segmentation submission.
@@ -225,3 +227,17 @@ TASK2_AUTOZOOM_REFINE_DISABLE=1
 The Docker wrapper still uses the legacy `TASK2_*` environment variable names expected by the submission scaffold.
 
 Exact inference from `artifacts/checkpoint.pt` is reproducible. Retraining follows the same submitted recipe, but bit-identical weights are not guaranteed because GPU training can be nondeterministic.
+
+## Citation
+
+If you use LETT-NeXt, please cite:
+
+```bibtex
+@article{aas2026lettnext,
+  title={LETT-NeXt: A Lightweight RECIST-Guided Model for 3D CT Lesion Segmentation},
+  author={Aas, Sebastian and Stenhede, Elias and Ranjbar, Arian},
+  journal={arXiv preprint arXiv:2606.30108},
+  year={2026},
+  url={https://arxiv.org/abs/2606.30108}
+}
+```
