@@ -6,6 +6,8 @@ Lightweight Efficient Tumor Tracing with NeXt.
 
 Minimal LETT-NeXt reproducibility code for the FLARE25 RECIST-to-3D lesion segmentation submission.
 
+**Competition:** [CVPR 2026 Foundation Models for Pan-cancer Segmentation in CT Images](https://www.codabench.org/competitions/7149/)
+
 ![LETT-NeXt visual abstract](figures/lett_next_visual_abstract.png)
 
 The package keeps one training recipe, one checkpoint, and one Docker submission path. It does not include raw FLARE or PanTS data.
