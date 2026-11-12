@@ -1,7 +1,7 @@
 \section{Ablation Studies}
 \label{sec:ablation_studies}
 
-Ablation studies evaluated three components of the RECIST-guided lesion segmentation pipeline: backbone architecture, auxiliary anatomy supervision, and adaptive field-of-view expansion with AutoZoom. These controlled ablations used shorter training runs and smaller crops than the final model, so they should be interpreted as component comparisons rather than direct final-model results. Additional setup details are provided in Appendix~\ref{app:controlled_ablation_details}.
+Ablation studies evaluated backbone architecture, auxiliary anatomy supervision, adaptive field-of-view expansion with AutoZoom, and test-time prompt removal. The backbone and auxiliary-head ablations used shorter training runs and smaller crops than the final model, so they should be interpreted as component comparisons rather than direct final-model results. Additional setup details are provided in Appendix~\ref{app:controlled_ablation_details}. AutoZoom and prompt removal used the frozen submitted checkpoint.
 
 
 \subsection{Architecture Ablation}
@@ -17,6 +17,7 @@ Table~\ref{tab:architecture_ablation_main} shows the 49-case validation results.
 Matched architecture ablation on the 49-case validation set.
 }
 \label{tab:architecture_ablation_main}
+\begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Backbone} & \textbf{Params.} & \textbf{Score (\%)} & \textbf{DSC (\%)} & \textbf{NSD (\%)} \\
@@ -32,6 +33,7 @@ MedNeXt-v2 small  & 1.28M  & 65.04 & 72.16 & 57.92 \\
                   & \textbf{66.74} \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \subsection{Auxiliary Anatomy Supervision}
@@ -51,6 +53,7 @@ Auxiliary-head ablation using a matched MedNeXt-v2 small prompt setup.
 Metrics are reported as mean \(\pm\) SD over the 49-case validation set on a \(0\)--\(100\) scale.
 }
 \label{tab:aux_head_ablation_main}
+\begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Variant} & \textbf{Threshold} & \textbf{Score (\%)} & \textbf{DSC (\%)} & \textbf{NSD (\%)} \\
@@ -73,6 +76,7 @@ Paired improvement
 & \(+1.17 \pm 5.21\) \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 Additional threshold-sweep results are provided in Appendix~\ref{app:auxiliary_head_control}.
@@ -98,6 +102,7 @@ Scores denote the mean challenge score on a \(0\)--\(100\) scale.
 \setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.05}
 {\small
+\begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{lrrrrr}
 \toprule
 \multirow{2}{*}{\textbf{Subset}} 
@@ -115,22 +120,31 @@ All PanTS      & 801 & 23 \; (2.9\%) & 64.10 & 64.19 & +0.09 \\
 Validation set & 49  & 3 \; (6.1\%)  & 75.99 & 75.87 & -0.12 \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 }
 \end{table}
 
-Adaptive expansion was retained to improve robustness in context-limited cases rather than to increase average validation performance. 
-The largest-lesion subsets showed small positive changes, while the full validation set showed a slight decrease. 
-These results suggest that AutoZoom can recover missed lesion extent when additional field of view is needed, but may also reduce segmentation quality when the expanded crop lowers the effective spatial resolution.
+In the three triggered validation cases, AutoZoom improved one case and worsened two, without establishing a general robustness benefit. The matched case-level analysis and qualitative examples are provided in Appendix~\ref{app:autozoom_cases}.
 
-Figure~\ref{fig:autozoom_examples} shows qualitative validation examples. 
-Adaptive expansion recovered missed lesion extent in some cases, but reduced segmentation quality in others.
+\subsection{Test-Time Prompt-Channel Removal}
+\label{sec:prompt_removal}
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\linewidth]{images/task2_autozoom_xy_validation_selected_v2.pdf}
-    \caption{
-    Qualitative examples of RECIST-guided AutoZoom on the validation set.
-    Each row shows the ground truth, the first prediction using the initial crop, and the second prediction after adaptive crop expansion.
-    }
-    \label{fig:autozoom_examples}
-\end{figure}
+Both network input prompt channels were zeroed at inference with the frozen submitted checkpoint on all 49 validation cases (84 lesions), preserving identical RECIST-centered CT crops, threshold 0.35, and prompt-aware component selection. AutoZoom was disabled in both arms to maintain identical crops. CT input hashes matched for all paired predictions.
+
+\begin{table}[htbp]
+\centering
+\caption{Test-time prompt removal with fixed RECIST-centered crops.}
+\label{tab:prompt_removal}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Prompt channels} & \textbf{DSC (\%)} & \textbf{NSD (\%)} & \textbf{Score (\%)} \\
+\midrule
+Original & 79.47 & 72.51 & 75.99 \\
+Both zeroed & 31.52 & 24.64 & 28.08 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+The mean score decreased by 47.91 percentage points (95\% paired bootstrap CI: 39.96--55.63). This indicates that the trained model relies on the prompt channels in addition to cropping and postprocessing. The test removes prompts only at inference and does not show how a model trained without them would perform.

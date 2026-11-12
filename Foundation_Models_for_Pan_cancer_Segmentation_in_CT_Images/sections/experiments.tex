@@ -9,6 +9,8 @@ The training data contained 25,112 records in total: 24,311 primary challenge re
 
 The validation set contained 49 CT cases with 84 annotated target lesions and RECIST markers. At inference, prompt-level predictions were merged into one labeled output mask per CT case. Unless otherwise stated, validation metrics were computed per CT case and reported as mean \(\pm\) SD over the 49 cases. Hidden test results were obtained from the challenge evaluation server, which reported aggregate metrics only.
 
+For local evaluation, DSC and NSD were computed per target lesion, averaged within each CT case, and then averaged across cases. NSD used surface-area weighting and a 2~mm tolerance, with NSD set to zero when lesion DSC was below 0.2. Hidden-test metrics were reported by the challenge server separately.
+
 Development results were measured using the challenge score, defined as the mean of Dice Similarity Coefficient (DSC) and Normalized Surface Dice (NSD):
 \begin{equation}
 \label{eq:score}
@@ -44,7 +46,7 @@ Target spacing & \(2.4 \times 1.0 \times 1.0\) mm, \(z,y,x\) \\
 Training data & 9,968 cases; 25,112 records \\
 Validation set & 49 CT cases; 84 RECIST markers \\
 Epochs & 25 \\
-Optimizer & AdamW \\
+Optimizer & Adam \\
 Initial learning rate & \(10^{-3}\) \\
 Batch size & 6 per GPU, 18 global \\
 Image augmentations & Intensity shift 0.03, intensity scaling 0.05, Gaussian noise \(\sigma=0.01\) \\

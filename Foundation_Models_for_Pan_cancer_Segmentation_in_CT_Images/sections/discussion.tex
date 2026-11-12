@@ -1,16 +1,14 @@
 \section{Discussion}
 
 LETT-NeXt demonstrates that sparse RECIST markers can support efficient 3D lesion segmentation under CPU inference constraints. 
-The model generally localized the marked lesions, while the remaining errors mainly involved lesion extent and boundary placement. 
-This pattern is consistent with the lower NSD than DSC on the public validation set and with the under-segmentation examples in \Cref{fig:percentile_examples}. 
-In practice, this suggests that the RECIST marker provides strong localization information, but does not fully resolve the 3D lesion boundary.
+The model generally localized the marked lesions, while the remaining errors mainly involved lesion extent and boundary placement, as illustrated by the under-segmentation examples in \Cref{fig:percentile_examples}.
 
 The controlled ablations suggest that backbone choice was the main driver of performance. 
 The MedNeXt-v2 f32 backbone provided the clearest performance gain, whereas auxiliary supervision acted more like weak training-time regularization than a definitive improvement. 
-AutoZoom was neutral on average, but remained useful as a selective fallback for cases where the initial regional crop may not fully contain the lesion.
+AutoZoom had near-neutral aggregate performance, with mixed outcomes in the triggered cases.
 
 The main limitations are the small 49-case validation set, threshold selection on the same local validation split used for model development, limited hidden-test detail, and the absence of external validation. 
-The ablations also tested components mostly in isolation, so interactions between backbone choice, auxiliary supervision, crop strategy, and postprocessing remain uncertain. 
+Reusing this validation set for model development may yield optimistic estimates. The ablations also tested components mostly in isolation, so interactions between backbone choice, auxiliary supervision, crop strategy, and postprocessing remain uncertain.
 Future work should evaluate LETT-NeXt on external datasets and improve boundary refinement. 
 A promising direction is to pre-train a larger anatomy-aware model on dense multi-class anatomy--tumor labels, for example, from PanTS, before fine-tuning it for RECIST-marker tumor segmentation or distilling it into a compact student model. 
 This strategy could improve anatomical context and boundary modeling while preserving efficient CPU inference.

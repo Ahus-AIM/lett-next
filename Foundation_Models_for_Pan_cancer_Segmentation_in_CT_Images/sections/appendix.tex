@@ -11,6 +11,7 @@ Table~\ref{tab:hardware_appendix} summarizes the hardware and runtime used for t
 \small
 \caption{Hardware and runtime used for the final training run.}
 \label{tab:hardware_appendix}
+\begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{p{0.38\linewidth} p{0.48\linewidth}}
 \toprule
 \textbf{Item} & \textbf{Value} \\
@@ -25,6 +26,7 @@ Data-loader workers & 8 per process \\
 Training runtime & 25.2 h for the complete training \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \section{MedNeXt-v2 Building Blocks}
@@ -52,6 +54,8 @@ The downsampling and upsampling blocks use residual projections to change spatia
 \label{app:controlled_ablation_details}
 
 This appendix provides the shared protocol for the controlled ablations reported in Section~\ref{sec:ablation_studies}. The architecture ablation and auxiliary-head control used the same training data, crop geometry, prompt encoding, training schedule, validation set, and postprocessing unless otherwise stated. Paired improvements were computed from per-case validation-score differences on the 49-case validation set. Uncertainty was estimated using 95\% percentile bootstrap confidence intervals over validation cases.
+
+For the prompt-removal diagnostic and AutoZoom reproduction, 95\% percentile confidence intervals used 10,000 paired bootstrap resamples of CT cases (seed 43). These intervals describe case-sampling uncertainty, not variation across training runs.
 
 \subsection{Shared Training and Validation Setup}
 \label{app:shared_ablation_setup}
@@ -118,6 +122,7 @@ Threshold sweep for the auxiliary-head control experiment.
 Scores are reported on a \(0\)--\(100\) scale, and differences are reported in percentage points.
 }
 \label{tab:aux_head_threshold_sweep}
+\begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{cccc}
 \toprule
 \textbf{Threshold} & \textbf{No aux score (\%)} & \textbf{Aux score (\%)} & \textbf{\(\Delta\) (pp)} \\
@@ -133,6 +138,41 @@ Scores are reported on a \(0\)--\(100\) scale, and differences are reported in p
 0.75 & 62.58 & 63.32 & +0.74 \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 The effect of auxiliary supervision was likely limited by its small share of the training data: PanTS contributed 801 of 25,112 training records, corresponding to 3.2\%. The auxiliary branch also learned a tumor signal on the 50-case PanTS auxiliary evaluation set, reaching an auxiliary tumor DSC of \(62.38\%\). These results should be interpreted as a matched single-run control rather than a multi-seed estimate.
+
+\section{AutoZoom Triggered-Case Analysis}
+\label{app:autozoom_cases}
+
+AutoZoom was rerun on all 49 validation cases using the submitted settings. All first-pass predictions matched the saved fixed-crop results. Expansion triggered in three cases (Table~\ref{tab:autozoom_cases}). Case 0057 gained lesion coverage but added false positives. Case 0067 missed more lesion voxels and added false positives. Case 0095 missed more lesion voxels despite fewer false positives.
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{All triggered public-validation cases. Scores are averaged across target lesions within each case. Identifiers share the prefix CT\_Lesion\_FLARE23Ts\_. Each triggered prompt had label 1.}
+\label{tab:autozoom_cases}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Case} & \textbf{Fixed score (\%)} & \textbf{AutoZoom score (\%)} & \textbf{$\Delta$ (pp)} \\
+\midrule
+0057 & 64.89 & 65.40 & +0.51 \\
+0067 & 82.77 & 80.15 & -2.62 \\
+0095 & 69.97 & 66.32 & -3.64 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+
+Figure~\ref{fig:autozoom_examples} shows examples where expansion helped or hurt segmentation. These examples come from training cases and are separate from the public-validation results in Table~\ref{tab:autozoom_cases}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\linewidth,height=0.70\textheight,keepaspectratio]{images/task2_autozoom_xy_validation_selected_v2.pdf}
+    \caption{Illustrative AutoZoom outcomes in training-set cases. Each row shows the reference, initial prediction, and prediction after expansion. White boxes indicate crop extent. The displayed scores describe the selected examples, not the three public-validation cases in Table~\ref{tab:autozoom_cases}.}
+    \label{fig:autozoom_examples}
+\end{figure}

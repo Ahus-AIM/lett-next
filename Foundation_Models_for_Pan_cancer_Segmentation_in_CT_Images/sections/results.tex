@@ -9,26 +9,28 @@ Quantitative performance was measured on the public validation set and hidden te
 LETT-NeXt completed all 49 public validation cases without failures or timeouts. 
 Table~\ref{tab:final-results} summarizes public validation and hidden test performance. 
 Compared with the Lite ENSAM competition baseline, LETT-NeXt achieved higher hidden test DSC, NSD, and challenge score. 
-On public validation, LETT-NeXt obtained higher DSC but lower NSD, resulting in a lower overall validation score.
+LETT-NeXt also achieved higher public-validation DSC, NSD, and score. Lite ENSAM validation values follow the corrected local evaluation reported in its repository\footnote{\url{https://github.com/Ahus-AIM/FLARE25}}.
 
 \begin{table}[htbp]
-\caption{Quantitative evaluation results on the public validation and hidden test sets. The LETT-NeXt validation result uses the inference pipeline with AutoZoom enabled.}
+\caption{Quantitative evaluation results on the public validation and hidden test sets. The LETT-NeXt validation result uses the inference pipeline with AutoZoom enabled. Lite ENSAM's validation score is approximated from its rounded DSC and NSD means.}
 \label{tab:final-results}
 \centering
+\begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{lcccccc}
 \toprule
 \multirow{2}{*}{Model} & \multicolumn{3}{c}{Public Validation} & \multicolumn{3}{c}{Hidden Test} \\
 \cmidrule(lr){2-4} \cmidrule(lr){5-7}
                          & DSC(\%) & NSD(\%) & Score(\%) & DSC(\%) & NSD(\%) & Score(\%) \\
 \midrule
-Lite ENSAM               & $76.10 \pm 16.30$ & $78.90 \pm 19.10$ & $77.50$            & $60.70$ & $63.60$ & $62.15$ \\
+Lite ENSAM               & $69.7 \pm 16.8$ & $61.8 \pm 19.1$ & $\approx 65.8$            & $60.70$ & $63.60$ & $62.15$ \\
 LETT-NeXt                & $79.43 \pm 10.09$ & $72.32 \pm 16.22$ & $75.87 \pm 12.17$ & $73.90$ & $67.30$ & $70.60$ \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
-The larger standard deviation for NSD suggests that boundary accuracy varied more than volumetric overlap. 
-This is expected in RECIST-guided segmentation, because the RECIST marker provides lesion position and approximate scale, but not the full 3D lesion boundary.
+The larger standard deviation for NSD suggests that boundary accuracy varied more than volumetric overlap.
+However, the numerical ordering of DSC and NSD alone does not establish under-segmentation.
 
 
 \subsection{Qualitative results}
@@ -37,7 +39,7 @@ This is expected in RECIST-guided segmentation, because the RECIST marker provid
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\linewidth]{images/percentile_segmentation_examples_full_v2.pdf}
+    \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{images/percentile_segmentation_examples_full_v2.pdf}
     \caption{
     Qualitative validation examples across score percentiles. 
     Each row shows the RECIST input marker, ground-truth mask, and LETT-NeXt prediction on the prompt slice. 
@@ -56,7 +58,8 @@ The hidden test server reported a mean runtime of \(20.9\,\mathrm{s}\) per case 
     \centering
     \caption{Runtime and memory use on the 49-case public validation set.}
     \label{tab:efficiency_results}
-    \begin{tabular}{ll}
+    \begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{ll}
         \toprule
         \textbf{Quantity} & \textbf{Value} \\
         \midrule
@@ -67,5 +70,6 @@ The hidden test server reported a mean runtime of \(20.9\,\mathrm{s}\) per case 
         Maximum resident memory & \(3.57\,\mathrm{GB}\) \\
         \bottomrule
     \end{tabular}
+\end{adjustbox}
 \end{table}
 
