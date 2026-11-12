@@ -1,0 +1,61 @@
+\documentclass[runningheads]{llncs}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{todonotes}
+\usepackage{parskip}
+% Required in preamble:
+\usepackage{booktabs}
+\usepackage[export]{adjustbox}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{siunitx}
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{multirow}
+\setuptodonotes{inline}
+\usepackage{cleveref}
+\captionsetup[table]{skip=4pt}
+
+\title{LETT-NeXt: A Lightweight RECIST-Guided Model for 3D CT Lesion Segmentation}
+\titlerunning{LETT-NeXt for CT Lesion Segmentation}
+\author{
+Sebastian~Aas\orcidID{0009-0006-2453-1289} \and \\
+Elias~Stenhede\orcidID{0009-0005-2654-4553} \and \\
+Arian~Ranjbar\orcidID{0000-0002-0422-2255}
+} 
+
+\date{\today}
+
+\institute{
+Medical Technology \& E-health, Akershus University Hospital, Lørenskog, Norway\\
+Faculty of Medicine, University of Oslo, Oslo, Norway\\
+\texttt{sebastian.aas@ahus.no}
+}
+
+\begin{document}
+
+\maketitle
+\input{sections/abstract}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{images/lett_next_visual_abstract.pdf}
+    \caption{
+        LETT-NeXt converts a RECIST marker into a volumetric lesion mask.
+    }
+    \label{fig:visual-abstract}
+\end{figure}
+\input{sections/introduction}
+\input{sections/methods}
+\input{sections/experiments}
+\input{sections/results}
+\input{sections/ablations}
+\input{sections/discussion}
+\input{sections/appendix}
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,71 @@
+\section{Experiments}
+
+\subsection{Dataset and evaluation measures}
+\label{sec:dataset_evaluation}
+
+The development data were provided by the CVPR 2026: Foundation Models for Pan-cancer Segmentation in CT Images competition and hosted on Hugging Face~\cite{FLAREMedFMFLARETask1PancancerRECISTto3DDatasets}. The challenge-provided training and validation partitions are referred to as the training and validation sets.
+
+The training data contained 25,112 records in total: 24,311 primary challenge records and 801 PanTS records used only for auxiliary supervision. The primary records came from 9,968 unique cases. Training was performed at the lesion-prompt level: each competition record paired one CT volume with one target lesion mask, voxel spacing metadata, and the corresponding RECIST marker. Therefore, cases with multiple target lesions could contribute multiple training records. PanTS records were used only for auxiliary anatomy--tumor supervision.
+
+The validation set contained 49 CT cases with 84 annotated target lesions and RECIST markers. At inference, prompt-level predictions were merged into one labeled output mask per CT case. Unless otherwise stated, validation metrics were computed per CT case and reported as mean \(\pm\) SD over the 49 cases. Hidden test results were obtained from the challenge evaluation server, which reported aggregate metrics only.
+
+Development results were measured using the challenge score, defined as the mean of Dice Similarity Coefficient (DSC) and Normalized Surface Dice (NSD):
+\begin{equation}
+\label{eq:score}
+    \mathrm{Score}
+    =
+    0.5 \cdot \mathrm{DSC}
+    +
+    0.5 \cdot \mathrm{NSD}.
+\end{equation}
+Unless otherwise stated, DSC, NSD, and challenge score are reported on a \(0\)--\(100\) scale, obtained by multiplying the corresponding \([0,1]\) metric values by 100. Absolute differences are reported in percentage points.
+
+\subsection{Implementation Details}
+\label{sec:implementation_details}
+
+LETT-NeXt was trained using a mixed RECIST-centered crop recipe. Standard crops were centered on the RECIST marker and endpoints, matching the prompt geometry used at inference. Enlarged-field crops used the same center but sampled a larger physical field of view before resizing to the fixed input size. Bounding-box-fitted crops were used only when a standard RECIST-centered crop risked cutting off part of the lesion; in these cases, the crop was centered on the lesion bounding box and adjusted to keep the full lesion inside the patch.
+
+The nominal sampling recipe was 60\% standard RECIST marker crops, 30\% enlarged-field RECIST crops, and up to 10\% bounding-box-fitted crops. If bounding-box-fitted sampling was not applicable, sampling fell back to the standard RECIST marker crop. All crop types enforced inclusion of the RECIST endpoints with a \SI{15}{\milli\metre} margin.
+
+Table~\ref{tab:training_protocol} summarizes the training protocol. Hardware and runtime details for the final training run are reported in Appendix~\ref{app:implementation_details}, Table~\ref{tab:hardware_appendix}.
+
+\begin{table}[!htbp]
+\centering
+\small
+\caption{Training protocol for LETT-NeXt.}
+\label{tab:training_protocol}
+\begin{tabular}{p{0.38\linewidth} p{0.48\linewidth}}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\
+\midrule
+Backbone & MedNeXt-v2 f32 \\
+Input crop size & \(72 \times 160 \times 160\) voxels, \(z,y,x\) \\
+Target spacing & \(2.4 \times 1.0 \times 1.0\) mm, \(z,y,x\) \\
+Training data & 9,968 cases; 25,112 records \\
+Validation set & 49 CT cases; 84 RECIST markers \\
+Epochs & 25 \\
+Optimizer & AdamW \\
+Initial learning rate & \(10^{-3}\) \\
+Batch size & 6 per GPU, 18 global \\
+Image augmentations & Intensity shift 0.03, intensity scaling 0.05, Gaussian noise \(\sigma=0.01\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The main lesion loss was defined as
+\begin{equation}
+    \mathcal{L}_{\mathrm{main}}
+    =
+    \mathcal{L}_{\mathrm{Dice}}
+    +
+    2\mathcal{L}_{\mathrm{BCE}}.
+\end{equation}
+
+The total training loss used the auxiliary supervision loss described in Section~\ref{sec:auxiliary_anatomy_supervision}:
+\begin{equation}
+    \mathcal{L}_{\mathrm{total}}
+    =
+    \mathcal{L}_{\mathrm{main}}
+    +
+    0.25\,\mathcal{L}_{\mathrm{aux}}.
+\end{equation}

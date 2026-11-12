@@ -1,0 +1,125 @@
+
+\subsection{Preprocessing}
+\label{sec:input_preprocessing}
+
+All CT inputs were resampled to a spacing of \(2.4 \times 1.0 \times 1.0\) mm in \(z,y,x\) order and cropped to \(72 \times 160 \times 160\) voxels. 
+For each RECIST marker, a RECIST-centered crop was extracted around the annotated lesion. 
+Predictions produced in crop space were later mapped back to the original image grid.
+
+CT intensities were clipped to the range \([-999, 255]\) HU and normalized using fixed training-set statistics. 
+For a CT intensity value \(x\), the normalized value was computed as
+\[
+x_{\mathrm{norm}}
+=
+\frac{\mathrm{clip}(x, -999, 255) - \mu}{\sigma},
+\]
+where \(\mu = 69.86\) and \(\sigma = 200.88\). 
+The resulting normalized CT crop is denoted by
+\[
+\mathbf{I}_{\mathrm{CT,norm}}.
+\]
+
+
+\subsubsection{Encoding of RECIST Marker}
+\label{sec:recist_prompt_encoding}
+
+LETT-NeXt was conditioned on RECIST annotations by concatenating two prompt channels with the normalized CT crop.
+The prompt channels provide sparse spatial guidance about the target lesion using only the RECIST diameter endpoints. 
+
+The first prompt channel encoded the RECIST marker as a binary line mask.
+The line was drawn on the axial slice halfway between the two endpoint slice coordinates,
+\[
+z_{\mathrm{RECIST}}
+=
+\mathrm{round}
+\left(
+\frac{\tilde{z}_1+\tilde{z}_2}{2}
+\right).
+\]
+On this slice, the two in-plane endpoint positions were connected by a straight line and thickened with disks of radius \(r=2\) voxels.
+Let \(\mathcal{L}_r\) denote the set of voxels covered by this thickened line.
+The line prompt was defined as
+\[
+\mathbf{P}_{\mathrm{line}}(\mathbf{v})
+=
+\left\{
+\begin{array}{ll}
+1, & \mathbf{v} \in \mathcal{L}_r, \\
+0, & \mathbf{v} \notin \mathcal{L}_r,
+\end{array}
+\right.
+\]
+where \(\mathbf{v}=(z,y,x)\) denotes a voxel coordinate in the crop.
+
+The second prompt channel encoded the RECIST endpoints as a Gaussian heatmap.
+For each voxel, the heatmap value was computed from its distance to the nearest RECIST endpoint:
+\[
+\mathbf{P}_{\mathrm{endpoints}}(\mathbf{v})
+=
+\max_{i \in \{1,2\}}
+\exp\left(
+-\frac{
+\left\| \mathbf{v} - \mathbf{p}_i \right\|_2^2
+}{
+2\sigma_{\mathrm{end}}^2
+}
+\right),
+\]
+where \(\mathbf{v}=(z,y,x)\) denotes a voxel coordinate in the crop, \(\mathbf{p}_i\) denotes endpoint \(i\) in crop coordinates, and \(\sigma_{\mathrm{end}}\) controls how quickly the heatmap decreases with distance.
+The endpoint prompt is continuous-valued, with high values near the endpoints and low values farther away.
+
+The final network input was formed by concatenating the normalized CT crop, the binary RECIST-line channel, and the endpoint heatmap channel:
+\[
+\mathbf{X}
+=
+\left[
+\mathbf{I}_{\mathrm{CT}},
+\mathbf{P}_{\mathrm{line}},
+\mathbf{P}_{\mathrm{endpoints}}
+\right],
+\]
+where \(\mathbf{P}_{\mathrm{line}}\) is the binary line prompt and \(\mathbf{P}_{\mathrm{endpoints}}\) is the continuous endpoint prompt.
+
+
+
+\subsection{Auxiliary Anatomy Supervision}
+\label{sec:auxiliary_head_ablation}
+
+The auxiliary head was evaluated using a matched 15-epoch control experiment. Both variants used the same training setup and the same 49-case local validation set. The only intended difference was whether the PanTS auxiliary anatomy--tumor head was enabled during training.
+
+Table~\ref{tab:aux_head_ablation_main} reports the best-threshold validation results. The auxiliary head increased the validation score from \(0.6613 \pm 0.1309\) to \(0.6709 \pm 0.1329\). DSC improved from \(0.7263 \pm 0.1118\) to \(0.7339 \pm 0.1108\), and NSD improved from \(0.5963 \pm 0.1845\) to \(0.6080 \pm 0.1868\). The paired mean improvements were \(+0.0096\) for validation score, \(+0.0076\) for DSC, and \(+0.0117\) for NSD.
+
+\begin{table}[htbp]
+\centering
+\caption{
+Auxiliary-head ablation using a matched MedNeXt-v2 small prompt setup.
+Values are reported as mean \(\pm\) SD over the 49-case local validation set at the selected threshold.
+}
+\label{tab:aux_head_ablation_main}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Variant} & \textbf{Threshold} & \textbf{Val. score} & \textbf{DSC} & \textbf{NSD} \\
+\midrule
+No auxiliary head
+& 0.35
+& \(0.6613 \pm 0.1309\)
+& \(0.7263 \pm 0.1118\)
+& \(0.5963 \pm 0.1845\) \\
+PanTS auxiliary head
+& 0.35
+& \(\mathbf{0.6709 \pm 0.1329}\)
+& \(\mathbf{0.7339 \pm 0.1108}\)
+& \(\mathbf{0.6080 \pm 0.1868}\) \\
+\midrule
+Paired improvement
+& --
+& \(+0.0096 \pm 0.0401\)
+& \(+0.0076 \pm 0.0315\)
+& \(+0.0117 \pm 0.0521\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Auxiliary anatomy supervision gave a small but consistent improvement. This modest effect is expected because the setting differs from the PanTS-only experiment: PanTS contributed only 801 of 25,112 gradient-training records, corresponding to 3.2\%, and the RECIST-centered regional crops did not always contain all surrounding anatomical structures represented in the auxiliary label space. The auxiliary output was also discarded at inference. These results therefore support interpreting the PanTS branch as training-time representation regularization rather than as a standalone anatomy segmentation component.
+
+
